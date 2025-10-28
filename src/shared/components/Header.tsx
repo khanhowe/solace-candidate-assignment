@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "@emotion/styled";
 import { Box, Typography } from "@mui/material";
 import SolaceLogo from "./SolaceLogo";

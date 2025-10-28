@@ -1,5 +1,7 @@
+"use client";
+
 import { createContext } from "react";
-import { Advocate, SortKey } from "../api/advocates/types";
+import { Advocate, Order, SortKey } from "@/shared/lib/types";
 
 export interface SearchContextType {
   searchQuery: string;

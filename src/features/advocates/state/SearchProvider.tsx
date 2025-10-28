@@ -1,6 +1,8 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { SearchContext, SearchProviderProps } from "./search-context";
-import { Advocate, SortKey } from "../api/advocates/types";
+import { Advocate, Order, SortKey } from "@/shared/lib/types";
 
 export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");

@@ -1,15 +1,11 @@
-import { advocateData } from "../../../db/seed/advocates";
-import { SORTABLE } from "./constants";
-import { Advocate, SearchParameters, SortKey } from "./types";
+import { advocateData } from "../data/advocates";
+import { SORTABLE } from "@/shared/lib/constants";
+import { Advocate, SortKey, Order, SearchParameters } from "@/shared/lib/types";
 
-const PAGE_MIN_SIZE = 1;
-const PAGE_MAX_SIZE = 50;
+const PAGE_MIN_SIZE = 5;
+const PAGE_MAX_SIZE = 15;
 
-/**
- * Service responsible for searching advocates based on various criteria.
- */
 export class SearchService {
-  private readonly logger = console;
   private readonly collator: Intl.Collator;
 
   // Using in-memory data for simplicity;
@@ -18,10 +14,8 @@ export class SearchService {
 
   constructor() {
     this.collator = new Intl.Collator(undefined, { sensitivity: "base" });
-    this.logger.log("SearchService initialized");
   }
 
-  /** Executes a search based on the provided parameters. */
   executeSearch(searchParams: SearchParameters): {
     data: Advocate[];
     total: number;
@@ -38,24 +32,13 @@ export class SearchService {
 
     const total = filtered.length;
 
-    this.logger.log(
-      `Search executed: query="${query}", sortBy="${searchParams.sortKey}", dir="${searchParams.dir}", page=${searchParams.page}, pageSize=${searchParams.pageSize} => totalResults=${total}`
-    );
-
     const startIdx = (searchParams.page - 1) * searchParams.pageSize;
     const paged = sorted.slice(startIdx, startIdx + searchParams.pageSize);
 
     return { data: paged, total };
   }
 
-  /** Unpacks query parameters from a URL */
-  unpackQueryParams(url: URL): {
-    query: string;
-    sortKey: SortKey;
-    dir: Order;
-    page: number;
-    pageSize: number;
-  } {
+  unpackQueryParams(url: URL): SearchParameters {
     const query = (url.searchParams.get("q") || "").trim().toLowerCase();
 
     const sort = (url.searchParams.get("sort") || "lastName") as SortKey;
@@ -97,7 +80,6 @@ export class SearchService {
     return hay.includes(query);
   }
 
-  /** Compares two advocates based on a specific key and sort direction. */
   private compare(a: Advocate, b: Advocate, key: SortKey, dir: Order): number {
     let cmp: number;
     if (key === "yearsOfExperience" || key === "phoneNumber") {

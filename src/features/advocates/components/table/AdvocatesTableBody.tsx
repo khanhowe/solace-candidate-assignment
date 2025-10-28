@@ -1,7 +1,7 @@
 import { TableBody, TableCell, TableRow } from "@mui/material";
-import { Advocate } from "../../../api/advocates/types";
-import { formatPhoneNumber } from "./formatPhoneNumber";
-import { useSearch } from "../../../hooks/useSearch";
+import { Advocate } from "@/shared/lib/types";
+import { formatPhoneNumber } from "../../lib/formatPhoneNumber";
+import { useSearch } from "../../hooks/useSearch";
 
 const AdvocatesTableBody: React.FC = () => {
   const { advocates } = useSearch();

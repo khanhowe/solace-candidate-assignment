@@ -1,31 +1,15 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import { Advocate, SortKey } from "./api/advocates/types";
-import Header from "./components/layout/Header";
-import Search from "./components/home/Search";
-import styled from "@emotion/styled";
-import { Box } from "@mui/material";
-import AdvocatesTable from "./components/home/advocates-table/AdvocatesTable";
-import { SearchProvider } from "./context/SearchProvider";
-
-const HomeContainer = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
-  width: "100%",
-  padding: "24px",
-  gap: "24px",
-});
+import React from "react";
+import Header from "@/shared/components/Header";
+import Search from "@/features/advocates/components/Search";
+import { AdvocatesTable } from "@/features/advocates/components/table";
 
 const Home: React.FC = () => {
   return (
-    <HomeContainer>
+    <main className="home-container">
       <Header />
-      <SearchProvider>
-        <Search />
-        <AdvocatesTable />
-      </SearchProvider>
-    </HomeContainer>
+      <Search />
+      <AdvocatesTable />
+    </main>
   );
 };
 

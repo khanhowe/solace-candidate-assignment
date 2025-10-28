@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Box,
   IconButton,
@@ -8,7 +10,7 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
-import { useSearch } from "../../hooks/useSearch";
+import { useSearch } from "../hooks/useSearch";
 
 const SearchBar = styled(TextField)({
   maxWidth: "800px",

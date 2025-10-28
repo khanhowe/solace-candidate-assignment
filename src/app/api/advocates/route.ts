@@ -1,4 +1,4 @@
-import { SearchService } from "./search.service";
+import { SearchService } from "@/server/search/search.service";
 
 const SORT_WHITELIST = [
   "firstName",

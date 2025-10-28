@@ -1,8 +1,10 @@
+"use client";
+
 import { CircularProgress, Table, TableContainer } from "@mui/material";
 import AdvocatesTableHeader from "./AdvocatesTableHeader";
 import AdvocatesTableBody from "./AdvocatesTableBody";
 import styled from "@emotion/styled";
-import { useSearch } from "../../../hooks/useSearch";
+import { useSearch } from "../../hooks/useSearch";
 import Paginator from "./Paginator";
 
 const TableContainerStyled = styled(TableContainer)({
