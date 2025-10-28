@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext } from "react";
 import { Advocate, Order, SortKey } from "@/shared/lib/types";
 

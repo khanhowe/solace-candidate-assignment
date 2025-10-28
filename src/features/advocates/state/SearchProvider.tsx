@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { SearchContext, SearchProviderProps } from "./search-context";
 import { Advocate, Order, SortKey } from "@/shared/lib/types";
