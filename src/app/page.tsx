@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Advocate } from "./api/advocates/types";
+import Header from "./components/layout/Header";
 
-export default function Home() {
-  const [advocates, setAdvocates] = useState([]);
-  const [filteredAdvocates, setFilteredAdvocates] = useState([]);
+const Home: React.FC = () => {
+  const [advocates, setAdvocates] = useState<Advocate[]>([]);
+  const [filteredAdvocates, setFilteredAdvocates] = useState<Advocate[]>([]);
 
   useEffect(() => {
     console.log("fetching advocates...");
@@ -43,7 +45,7 @@ export default function Home() {
 
   return (
     <main style={{ margin: "24px" }}>
-      <h1>Solace Advocates</h1>
+      <Header />
       <br />
       <br />
       <div>
@@ -88,4 +90,6 @@ export default function Home() {
       </table>
     </main>
   );
-}
+};
+
+export default Home;
