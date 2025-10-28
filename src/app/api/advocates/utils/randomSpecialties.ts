@@ -1,4 +1,5 @@
-import { SPECIALTIES, Specialty } from "../types";
+import { SPECIALTIES } from "../constants";
+import { Specialty } from "../types";
 
 /**
  * Generates two random specialties from the SPECIALTIES array.

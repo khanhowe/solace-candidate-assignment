@@ -1,17 +1,13 @@
 import { TableBody, TableCell, TableRow } from "@mui/material";
 import { Advocate } from "../../../api/advocates/types";
 import { formatPhoneNumber } from "./formatPhoneNumber";
+import { useSearch } from "../../../hooks/useSearch";
 
-interface AdvocatesTableBodyProps {
-  visibleRows: Advocate[];
-}
-
-const AdvocatesTableBody: React.FC<AdvocatesTableBodyProps> = ({
-  visibleRows,
-}) => {
+const AdvocatesTableBody: React.FC = () => {
+  const { advocates } = useSearch();
   return (
     <TableBody>
-      {visibleRows.map((advocate: Advocate) => {
+      {advocates.map((advocate: Advocate) => {
         return (
           <TableRow key={advocate.id}>
             <TableCell>{advocate.firstName}</TableCell>

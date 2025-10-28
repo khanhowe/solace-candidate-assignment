@@ -1,8 +1,4 @@
-/**
- * Formats a phone number as (XXX) XXX-XXXX
- * @param phoneNumber - phone number as a number
- * @returns formatted phone number as a string
- */
+/** Formats a phone number as (XXX) XXX-XXXX */
 export const formatPhoneNumber = (phoneNumber: number) => {
   const phoneString = phoneNumber.toString().padStart(10, "0");
   return `(${phoneString.slice(0, 3)}) ${phoneString.slice(
