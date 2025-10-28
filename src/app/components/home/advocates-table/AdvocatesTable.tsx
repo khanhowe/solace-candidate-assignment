@@ -4,6 +4,12 @@ import AdvocatesTableHeader from "./AdvocatesTableHeader";
 import { useMemo, useState } from "react";
 import { getComparator } from "./getComparator";
 import AdvocatesTableBody from "./AdvocatesTableBody";
+import styled from "@emotion/styled";
+
+const TableContainerStyled = styled(TableContainer)({
+  boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+  borderRadius: "4px",
+});
 
 interface AdvocatesTableProps {
   filteredAdvocates: Advocate[];
@@ -49,7 +55,7 @@ const AdvocatesTable: React.FC<AdvocatesTableProps> = ({
   );
 
   return (
-    <TableContainer>
+    <TableContainerStyled>
       <Table>
         <colgroup>
           <col style={{ width: "12%" }} />
@@ -76,7 +82,7 @@ const AdvocatesTable: React.FC<AdvocatesTableProps> = ({
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-    </TableContainer>
+    </TableContainerStyled>
   );
 };
 
