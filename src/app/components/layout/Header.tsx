@@ -16,8 +16,8 @@ const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <svg
-        width="10%"
-        height="10%"
+        width="115px"
+        height="32px"
         viewBox="0 0 115 32"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
