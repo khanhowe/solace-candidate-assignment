@@ -34,7 +34,7 @@ const headCells: HeadCell[] = [
   { id: "degree", label: "Degree" },
   { id: "specialties", label: "Specialties", sortable: false },
   { id: "yearsOfExperience", label: "Years of Experience", numeric: true },
-  { id: "phoneNumber", label: "Phone Number", numeric: true },
+  { id: "phoneNumber", label: "Phone Number", numeric: true, sortable: false },
 ];
 
 const AdvocatesTableHeader: React.FC<AdvocatesTableHeaderProps> = ({

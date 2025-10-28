@@ -1,5 +1,6 @@
 import { TableBody, TableCell, TableRow } from "@mui/material";
 import { Advocate } from "../../../api/advocates/types";
+import { formatPhoneNumber } from "./formatPhoneNumber";
 
 interface AdvocatesTableBodyProps {
   visibleRows: Advocate[];
@@ -19,7 +20,9 @@ const AdvocatesTableBody: React.FC<AdvocatesTableBodyProps> = ({
             <TableCell>{advocate.degree}</TableCell>
             <TableCell>{advocate.specialties.join(", ")}</TableCell>
             <TableCell align="right">{advocate.yearsOfExperience}</TableCell>
-            <TableCell align="right">{advocate.phoneNumber}</TableCell>
+            <TableCell align="right">
+              {formatPhoneNumber(advocate.phoneNumber)}
+            </TableCell>
           </TableRow>
         );
       })}

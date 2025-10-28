@@ -56,9 +56,9 @@ const AdvocatesTable: React.FC<AdvocatesTableProps> = ({
           <col style={{ width: "12%" }} />
           <col style={{ width: "14%" }} />
           <col style={{ width: "10%" }} />
-          <col style={{ width: "36%" }} />
-          <col style={{ width: "8%" }} />
-          <col style={{ width: "8%" }} />
+          <col style={{ width: "32%" }} />
+          <col style={{ width: "10%" }} />
+          <col style={{ width: "10%" }} />
         </colgroup>
         <AdvocatesTableHeader
           onRequestSort={handleRequestSort}
