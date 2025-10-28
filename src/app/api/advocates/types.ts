@@ -31,6 +31,12 @@ export const SPECIALTIES = [
 
 export type Specialty = (typeof SPECIALTIES)[number];
 
+/**
+ * Represents an advocate in the system.
+ * Note: I'm using this type both in the API and the frontend for simplicity.
+ * In a real-world application, I would build types separately for the API and frontend
+ * to avoid tight coupling between the two layers.
+ */
 export type Advocate = {
   id: string;
   firstName: string;
