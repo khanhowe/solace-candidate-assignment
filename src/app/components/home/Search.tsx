@@ -8,25 +8,25 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
+import { useSearch } from "../../hooks/useSearch";
 
 const SearchBar = styled(TextField)({
   maxWidth: "800px",
 });
 
-interface SearchProps {
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  searchClear: () => void;
-}
+const Search: React.FC = () => {
+  const { searchQuery, setSearchQuery } = useSearch();
 
-const Search: React.FC<SearchProps> = ({ value, onChange, searchClear }) => {
+  const handleSearchClear = () => {
+    setSearchQuery("");
+  };
   return (
     <Box>
       <Typography variant="h6">Search</Typography>
       <SearchBar
-        value={value}
-        onChange={onChange}
+        value={searchQuery}
         placeholder="Search advocates by name, city, degree, specialty, or years of experience"
+        onChange={(e) => setSearchQuery(e.target.value)}
         variant="outlined"
         fullWidth
         size="small"
@@ -41,8 +41,8 @@ const Search: React.FC<SearchProps> = ({ value, onChange, searchClear }) => {
               <InputAdornment position="end">
                 <IconButton
                   size="small"
-                  onClick={searchClear}
-                  disabled={!value}
+                  onClick={handleSearchClear}
+                  disabled={!searchQuery}
                 >
                   <CloseIcon />
                 </IconButton>

@@ -5,23 +5,14 @@ import {
   TableRow,
   TableSortLabel,
 } from "@mui/material";
-import { Advocate } from "../../../api/advocates/types";
+import { SortKey } from "../../../api/advocates/types";
+import { useSearch } from "../../../hooks/useSearch";
 
 const StyledHeaderCell = styled(TableCell)({
   fontWeight: "bold",
 });
-
-interface AdvocatesTableHeaderProps {
-  onRequestSort: (
-    event: React.MouseEvent<unknown>,
-    property: keyof Advocate
-  ) => void;
-  order: Order;
-  orderBy: keyof Advocate;
-}
-
 interface HeadCell {
-  id: keyof Advocate;
+  id: SortKey;
   label: string;
   numeric?: boolean;
   sortable?: boolean;
@@ -37,20 +28,23 @@ const headCells: HeadCell[] = [
   { id: "phoneNumber", label: "Phone Number", numeric: true, sortable: false },
 ];
 
-const AdvocatesTableHeader: React.FC<AdvocatesTableHeaderProps> = ({
-  onRequestSort,
-  order,
-  orderBy,
-}) => {
-  const createSortHandler =
-    (property: keyof Advocate) => (event: React.MouseEvent<unknown>) =>
-      onRequestSort(event, property);
+const AdvocatesTableHeader: React.FC = () => {
+  const { order, setOrder, sortKey, setSortKey } = useSearch();
+
+  const handleRequestSort = (
+    _event: React.MouseEvent<unknown>,
+    property: SortKey
+  ) => {
+    const isAsc = order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
+    setSortKey(property);
+  };
 
   return (
     <TableHead>
       <TableRow>
         {headCells.map((headCell) => {
-          const isActive = orderBy === headCell.id;
+          const isActive = sortKey === headCell.id;
           const sortable = headCell.sortable !== false;
           return (
             <StyledHeaderCell
@@ -62,7 +56,7 @@ const AdvocatesTableHeader: React.FC<AdvocatesTableHeaderProps> = ({
                 <TableSortLabel
                   active={isActive}
                   direction={isActive ? order : "asc"}
-                  onClick={createSortHandler(headCell.id)}
+                  onClick={(event) => handleRequestSort(event, headCell.id)}
                 >
                   {headCell.label}
                 </TableSortLabel>
