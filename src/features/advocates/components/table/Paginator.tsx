@@ -1,5 +1,5 @@
 import { TablePagination } from "@mui/material";
-import { useSearch } from "../../../hooks/useSearch";
+import { useSearch } from "../../hooks/useSearch";
 
 const Paginator: React.FC = () => {
   const { page, pageSize, setPage, setPageSize, totalCount } = useSearch();

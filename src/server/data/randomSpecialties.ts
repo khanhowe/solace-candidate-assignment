@@ -1,5 +1,5 @@
-import { SPECIALTIES } from "../constants";
-import { Specialty } from "../types";
+import { SPECIALTIES } from "@/shared/lib/constants";
+import { Specialty } from "@/shared/lib/types";
 
 /**
  * Generates two random specialties from the SPECIALTIES array.

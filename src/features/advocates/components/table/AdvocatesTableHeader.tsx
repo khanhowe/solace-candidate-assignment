@@ -5,8 +5,8 @@ import {
   TableRow,
   TableSortLabel,
 } from "@mui/material";
-import { SortKey } from "../../../api/advocates/types";
-import { useSearch } from "../../../hooks/useSearch";
+import { SortKey } from "@/shared/lib/types";
+import { useSearch } from "../../hooks/useSearch";
 
 const StyledHeaderCell = styled(TableCell)({
   fontWeight: "bold",
@@ -35,9 +35,10 @@ const AdvocatesTableHeader: React.FC = () => {
     _event: React.MouseEvent<unknown>,
     property: SortKey
   ) => {
-    const isAsc = order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
+    const isSameColumn = sortKey === property;
+    const nextOrder = isSameColumn && order === "asc" ? "desc" : "asc";
     setSortKey(property);
+    setOrder(nextOrder);
   };
 
   return (

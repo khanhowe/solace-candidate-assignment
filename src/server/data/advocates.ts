@@ -1,5 +1,5 @@
-import { Advocate } from "../../app/api/advocates/types";
-import { randomSpecialties } from "../../app/api/advocates/utils/randomSpecialties";
+import { Advocate } from "@/shared/lib/types";
+import { randomSpecialties } from "./randomSpecialties";
 import { v4 as uuidv4 } from "uuid";
 
 const advocateData: Advocate[] = [

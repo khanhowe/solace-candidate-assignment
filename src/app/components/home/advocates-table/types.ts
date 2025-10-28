@@ -1,1 +1,0 @@
-type Order = "asc" | "desc";
