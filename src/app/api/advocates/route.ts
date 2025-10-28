@@ -1,12 +1,28 @@
-import db from "../../../db";
-import { advocates } from "../../../db/schema";
-import { advocateData } from "../../../db/seed/advocates";
+import { SearchService } from "@/server/search/search.service";
 
-export async function GET() {
-  // Uncomment this line to use a database
-  // const data = await db.select().from(advocates);
+const SORT_WHITELIST = [
+  "firstName",
+  "lastName",
+  "city",
+  "degree",
+  "yearsOfExperience",
+];
+const DEFAULT_SORT_BY = "lastName";
 
-  const data = advocateData;
+export async function GET(request: Request): Promise<Response> {
+  const searchService = new SearchService();
+  const url = new URL(request.url);
 
-  return Response.json({ data });
+  const { query, sortKey, dir, page, pageSize } =
+    searchService.unpackQueryParams(url);
+
+  const { data, total } = searchService.executeSearch({
+    query,
+    sortKey: SORT_WHITELIST.includes(sortKey) ? sortKey : DEFAULT_SORT_BY,
+    dir,
+    page,
+    pageSize,
+  });
+
+  return Response.json({ data, total });
 }
